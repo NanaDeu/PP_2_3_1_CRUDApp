@@ -31,7 +31,7 @@ public class PersistenceJPAConfig {
         em.setPackagesToScan( "web" );
         em.setJpaVendorAdapter( new HibernateJpaVendorAdapter() );
         em.setJpaProperties( additionalProperties() );
-        em.setPersistenceUnitName( "mytestdomain" );
+        em.setPersistenceUnitName( "user" );
         em.setPersistenceProviderClass(HibernatePersistenceProvider.class);
         em.afterPropertiesSet();
 
@@ -42,7 +42,7 @@ public class PersistenceJPAConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("web");
+        em.setPackagesToScan("web.model");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
