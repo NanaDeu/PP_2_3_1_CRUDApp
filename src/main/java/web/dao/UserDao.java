@@ -12,15 +12,15 @@ public interface UserDao {
 
     void save(User user);
 
-    void createUsersTable();
-
-    void dropUsersTable();
-
-    void saveUser(String name, String lastName, byte age);
-
     void removeUserById(long id);
 
     List<User> getAllUsers();
 
-    void cleanUsersTable();
+    void createUsersTable();
+
+/*    void dropUsersTable();
+
+    void saveUser(String name, String lastName, byte age);
+
+    void cleanUsersTable();*/
 }

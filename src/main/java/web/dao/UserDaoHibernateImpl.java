@@ -3,17 +3,63 @@ package web.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
-import web.util.Util;
+//import web.util.Util;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class UserDaoHibernateImpl implements UserDao {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    /*    @PersistenceContext
+        public void setEntityManager(EntityManager entityManager) {
+            this.entityManager = entityManager;
+        }*/
     public UserDaoHibernateImpl() {
 
     }
 
+    @Override
     public User getUserById(long id) {
+        return entityManager.find(User.class, id);
+
+    }
+
+    @Override
+    public void updateUser(long id, User user) {
+        entityManager.merge(user);
+    }
+
+    @Override
+    public void save(User user) {
+        entityManager.persist(user);
+    }
+
+    @Override
+    public void removeUserById(long id) {
+        entityManager.remove(getUserById(id));
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return entityManager.createQuery("select u from User u", User.class).getResultList();
+    }
+
+    @Override
+    public void createUsersTable() {
+        entityManager.createNativeQuery("CREATE TABLE IF NOT EXISTS user (id INT PRIMARY KEY NOT NULL AUTO_INCREMENT," +
+                " name VARCHAR(40), lastName VARCHAR(40), age INT);");
+    }
+
+   /* public User getUserById(long id) {
         Session session = Util.getSessionFactory().openSession();
         return session.get(User.class, id);
 
@@ -131,5 +177,5 @@ public class UserDaoHibernateImpl implements UserDao {
 
             transaction.commit();
         }
-    }
+    }*/
 }

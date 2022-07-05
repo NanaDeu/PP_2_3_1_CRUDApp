@@ -1,4 +1,4 @@
-package web;
+/*package web;
 
 import web.model.User;
 import web.service.UserService;
@@ -25,8 +25,8 @@ public class Main {
 
         userService.removeUserById(2);
         userService.getAllUsers();
-/*        userService.cleanUsersTable();
-        userService.dropUsersTable();*/
+*//*        userService.cleanUsersTable();
+        userService.dropUsersTable();*//*
 
     }
-}
+}*/

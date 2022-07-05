@@ -1,3 +1,4 @@
+/*
 package web.util;
 
 import org.hibernate.SessionFactory;
@@ -7,7 +8,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import web.model.User;
 
-import java.sql.Connection;
 import java.util.Properties;
 
 public class Util {
@@ -47,9 +47,7 @@ public class Util {
                 System.out.println("Problem creating session factory");
                 e.printStackTrace();
             }
-
         }
         return sessionFactory;
     }
-
-}
+}*/

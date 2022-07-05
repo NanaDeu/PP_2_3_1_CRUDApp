@@ -11,19 +11,18 @@ public interface UserService {
 
     void updateUser(long id, User user);
 
-    List<User> getThatManyUsers(int amount);
-
-    void createUsersTable();
-
-    void dropUsersTable();
-
     void save(User user);
-
-    void saveUser(String name, String lastName, byte age);
 
     void removeUserById(long id);
 
     List<User> getAllUsers();
 
-    void cleanUsersTable();
+    void createUsersTable();
+
+/*    void dropUsersTable();
+
+    void saveUser(String name, String lastName, byte age);
+
+    void cleanUsersTable();*/
+
 }
