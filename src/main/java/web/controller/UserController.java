@@ -20,8 +20,8 @@ public class UserController {
     }
 
     @GetMapping()
-    public String printCars(ModelMap model) {
-        userService.createUsersTable();
+    public String printUsers(ModelMap model) {
+       // userService.createUsersTable();
 
         model.addAttribute("userList", userService.getAllUsers());
         return "/users";

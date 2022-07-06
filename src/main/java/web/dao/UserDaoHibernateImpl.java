@@ -3,6 +3,7 @@ package web.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import java.util.List;
 
 @Repository
@@ -18,11 +20,12 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
+/*
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }*/
 
-    /*    @PersistenceContext
-        public void setEntityManager(EntityManager entityManager) {
-            this.entityManager = entityManager;
-        }*/
     public UserDaoHibernateImpl() {
 
     }

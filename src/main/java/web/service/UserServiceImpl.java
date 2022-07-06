@@ -16,7 +16,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-
     UserDao userDao = new UserDaoHibernateImpl();
 
     @Transactional(readOnly = true)

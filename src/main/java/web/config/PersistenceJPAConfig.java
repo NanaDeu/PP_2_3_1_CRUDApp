@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -18,9 +18,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@EnableJpaRepositories
+//@EnableJpaRepositories
 @Configuration
-@EnableTransactionManagement (proxyTargetClass = true)
+@EnableTransactionManagement(proxyTargetClass = true)
 @ComponentScan("web")
 public class PersistenceJPAConfig {
 
@@ -42,7 +42,7 @@ public class PersistenceJPAConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("web.model");
+        em.setPackagesToScan("web");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -51,6 +51,7 @@ public class PersistenceJPAConfig {
         return em;
     }
 
+    // "jdbc:mysql://localhost:3306/2_3_crud_app?createDatabaseIfNotExist=true"
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -89,5 +90,20 @@ public class PersistenceJPAConfig {
 
         return properties;
     }
+
+/*    protected Properties properties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect",
+                dataSourceProvider().hibernateDialect()
+        );
+        properties.put("hibernate.hbm2ddl.auto",
+                "create-drop");
+        DataSource dataSource = newDataSource();
+        if (dataSource != null) {
+            properties.put("hibernate.connection.datasource",
+                    dataSource);
+        }
+        return properties;
+    }*/
 
 }
