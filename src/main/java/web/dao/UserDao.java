@@ -18,9 +18,4 @@ public interface UserDao {
 
     void createUsersTable();
 
-/*    void dropUsersTable();
-
-    void saveUser(String name, String lastName, byte age);
-
-    void cleanUsersTable();*/
 }
